@@ -1,9 +1,10 @@
-//
-//  Network.h
-//  DMProj2
-//
-//  Created by Harry Paas on 2/18/23.
-//
+/*
+ * Filename: Network.h
+ * Created Date: 2/18/23
+ * Author: Harrison Paas
+ * 
+ * Description: This file contains the declaration of the Network interface and the implementation for an MLP network.
+ */
 
 #ifndef Network_h
 #define Network_h
@@ -46,6 +47,8 @@ using namespace std;
 class Network{
 public:
     enum ACTIVATION {LOGISTIC, TANH, RELU};
+    
+    virtual void randomize_weights_and_biases(int seed)=0;
     virtual void train(ARFFEntry& e) = 0;
     virtual string classify(ARFFEntry& e, vector<string> classlabels) =0;
     virtual double predict(ARFFEntry& e) =0;
@@ -115,7 +118,7 @@ public:
     
     void setLearningRate(double lr){ learningrate=lr;}
     
-    void randomize_weights_and_biases(int seed=421){
+    void randomize_weights_and_biases(int seed=420){
         
         random_device rd;
         mt19937 rng(rd());
@@ -306,10 +309,7 @@ public:
                     double y = exp(-1*val);
                     arr[i]=(x-y)/(x+y);
                 }*/
-                //for(int i=0;i<size;i++) cout<<arr[i]<<" "<<i<<" "<<size<<endl;
-                for(int i=0;i<size;i++) if(arr[i]>100000) cout<<arr[i]<<" "<<i<<" "<<size<<endl;
                 vdTanh(size, arr, arr);
-                for(int i=0;i<size;i++) if(isnan(arr[i])) cout<<"nan "<<i<<" "<<size<<endl;
                 
                 break;
             case RELU:
@@ -342,11 +342,6 @@ public:
                 break;
             case TANH:
                 for(int i=0;i<size;i++) outarr[i]*=1-pow(timesarr[i],2);
-                /*
-                vsCosh(size, timesarr, timesarr);
-                vsSqr(size, timesarr, timesarr);
-                vsInv(size, timesarr, timesarr);
-                vsMul(size, timesarr, outarr, outarr);*/
                 break;
             case RELU:
                 for(int i=0;i<size;i++) outarr[i]*= timesarr[i]>0 ? 1 : 0;
