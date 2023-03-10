@@ -14,6 +14,7 @@ To get started, clone the repository and include the "Network.h" header file in 
 You must use the #define CLASS "yourclasslabel" macro before you include the Network.h file. (the default is "class")  
 The library is intended to optimize the training time, so it performs the "one hot encoding" for categorical values when it reads the file instead of doing the encoding for every training. This means that the file's metadata is needed to manupulate the dataset, which means that the class label must be explicitly stated when the code is compiled.
 ```cpp
+#define classlabel "Class"
 #include "Network.h"
 ```
 The main function in "main.cpp" provides an example of how to load a dataset from an ARFF file, preprocess it, and train a multi-layer perceptron (MLP) network using cross-validation. You can modify this code to fit your own use case.
