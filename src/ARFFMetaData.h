@@ -225,7 +225,7 @@ public:
     }
     
     //returns the unique values for the class label
-    //can onlt be used when class is categorical
+    //can only be used when class is categorical
     vector<string>& getClassLabels(){
         return getValues(CLASSLABEL);
     }
