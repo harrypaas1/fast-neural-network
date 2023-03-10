@@ -1,9 +1,10 @@
-//
-//  ARFFEntry.h
-//  DMProj2
-//
-//  Created by Harry Paas on 2/27/23.
-//
+/*
+ * Filename: ARFFEntry.h
+ * Created Date: 2/18/23
+ * Author: Harrison Paas
+ * 
+ * Description: This file contains the implementation of a data object used to store ARFF data entries using "one hot encoding".
+ */
 
 #ifndef ARFFEntry_h
 #define ARFFEntry_h
