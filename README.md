@@ -67,8 +67,8 @@ This code performs cross-validation on the specified dataset using an MLP networ
 ## Compiling
 To build your program on the command line, follow the two steps:  
 - Run the Intel oneAPI setvars script to set the environment variables necessary to compile the library.  
-- - On Linux/macOS use the command: source /opt/intel/oneapi/setvars.sh. 
-- - On Windown use the command: "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"  
+  - On Linux/macOS use the command: source /opt/intel/oneapi/setvars.sh. 
+  - On Windown use the command: "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"  
 - Build your program with the provided Makefile. Simply type "make" to build then "./main" to run. 
 If your program is in a different directory than the Network.h files, you need to copy the Makefile to your working directory and add the flag "-I/path/to/your/network/installation/src" to the LINKFLAGS section.
   
