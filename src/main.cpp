@@ -18,7 +18,7 @@
 
 #include <mkl.h>
 
-#define CLASS "'Class'"
+#define CLASS "class"
 #include "Network.h"
 
 using namespace std;
