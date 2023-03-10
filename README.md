@@ -31,7 +31,7 @@ ARFFDataset::loadARFF(filename, data);
 This will load the dataset from the specified file and store it in a ARFFDataset object named "data".
 For the python enjoyers you can also use
 ```cpp
-auto data = loadARFF(filename);
+auto data = ARFFDataset::loadARFF(filename);
 ```
 
 and for the old school
@@ -56,7 +56,7 @@ The "replaceMissingValuesByClass()" function replaces missing values in the data
 This library currently only supports multilayer perceptron networks with stochastic gradient descent backpropogation for training. The supported activation functions are sigmoid, tanh, and relu. The Network class provides a static method cross_validate which returns a map with a variety of statistics.
 
 ```cpp
-auto scores = Network::cross_validate<MLPNetwork>(data, hidden_layer_sizes, num_epochs, learningrate, num_folds, activation);
+map<string,double> scores = Network::cross_validate<MLPNetwork>(data, hidden_layer_sizes, num_epochs, learningrate, num_folds, activation);
 ```
 This code performs cross-validation on the specified dataset using an MLP network with the specified hyperparameters. The "num_folds" parameter specifies the number of folds to use in cross-validation.
 
