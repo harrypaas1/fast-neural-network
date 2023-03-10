@@ -19,7 +19,7 @@ You must use the #define CLASS "yourclasslabel" macro before you include the Net
 #define classlabel "Class"
 #include "Network.h"
 ```
-The library is intended to optimize the training time, so it performs the "one hot encoding" for categorical values when it reads the file instead of doing the encoding for every training. This means that the file's metadata is needed to manupulate the dataset, which means that the class label must be explicitly stated when the code is compiled.  
+The library is intended to optimize the training time, so it performs the "one hot encoding" for categorical values when it reads the file instead of doing the encoding for every training. This means that the file's metadata is needed to manipulate the dataset, which means that the class label must be explicitly stated when the code is compiled.  
 The main function in "main.cpp" provides an example of how to load a dataset from an ARFF file, preprocess it, and train a multi-layer perceptron (MLP) network using cross-validation. You can modify this code to fit your own use case.
 
 
@@ -63,6 +63,21 @@ This library currently only supports multilayer perceptron networks with stochas
 map<string,double> scores = Network::cross_validate<MLPNetwork>(data, hidden_layer_sizes, num_epochs, learningrate, num_folds, activation);
 ```
 This code performs cross-validation on the specified dataset using an MLP network with the specified hyperparameters. The "num_folds" parameter specifies the number of folds to use in cross-validation.
+
+```output
+Accuracy 0.859237
+Macro F1 0.795801
+Macro Precision 0.815687
+Macro Recall 0.781015
+Micro F1 <=50K 0.909606
+Micro F1 >50K 0.681997
+Micro Precision <=50K 0.889147
+Micro Precision >50K 0.742228
+Micro Recall <=50K 0.931049
+Micro Recall >50K 0.63098
+Total time 42.3828
+Train time 40.5367
+```
 
 ## Compiling
 To build your program on the command line, follow the two steps:  
