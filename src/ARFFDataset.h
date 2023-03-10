@@ -1,9 +1,10 @@
-//
-//  ARFFDataset.h
-//  DMProj2
-//
-//  Created by Harry Paas on 3/2/23.
-//
+/*
+ * Filename: ARFFDataset.h
+ * Created Date: 2/18/23
+ * Author: Harrison Paas
+ * 
+ * Description: This file contains the implementation of various methods for loading and processing data in ARFF format.
+ */
 
 #ifndef ARFFDataset_h
 #define ARFFDataset_h
