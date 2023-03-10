@@ -48,6 +48,7 @@ This library provides several preprocessing functions for handling missing value
 ```cpp
 data.replaceMissingValuesByClass();
 data.normalize();
+data.shuffle() //note cross_validate does not automatically shuffle data
 ```
 The "replaceMissingValuesByClass()" function replaces missing values in the dataset with the mean/mode value for the attribute within the same class. The "normalize()" function normalizes the dataset to have zero mean and unit variance.
 
