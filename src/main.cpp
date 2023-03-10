@@ -1,22 +1,14 @@
-//
-//  main.cpp
-//  DMProj2
-//
-//  Created by Harry Paas on 2/13/23.
-//
+/*
+ * Filename: main.cpp
+ * Created Date: 2/13/23
+ * Author: Harrison Paas
+ * 
+ * Description: This file contains a simple example of how to use the Network class's cross_validate method to test an MLP classifier.
+ */
 
 
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <cmath>
-#include <chrono>
-#include <algorithm>
-#include <random>
-#include <map>
-
-#include <mkl.h>
 
 #define CLASS "class"
 #include "Network.h"
@@ -53,8 +45,3 @@ int main(int argc, char** argv){
     
     return 0;
 }
-
-
-
-
-
