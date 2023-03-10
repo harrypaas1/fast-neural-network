@@ -5,10 +5,10 @@ LIBS = -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lm
 
 
 main: main.cpp
-	g++ $(COMPFLAGS) -o main main.cpp  $(LINKFLAGS) $(LIBS)
+	g++ $(COMPFLAGS) -o main.out main.cpp  $(LINKFLAGS) $(LIBS)
 
 all: main
 
 clean:
-	rm a.out
+	rm main.out
 
