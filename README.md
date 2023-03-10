@@ -1,6 +1,8 @@
 # C++ Neural Network
 
-This is a simple multi-layer perceptron neural network implementation in C++. It can be used to read an ARFF file and train and cross-validate a multilayer perceptron network for classification or regression tasks. The code uses the Intel Math Kernel Library for optimized matrix computations.
+This is a lightweight implementation of a multi-layer perceptron neural network in C++. It provides a simple and efficient way to read an ARFF file, preprocess the data, and train and cross-validate a multilayer perceptron network for classification or regression tasks.
+
+The main goal of this library is to optimize the training time of the network. The library uses the Intel Math Kernel Library for optimized matrix computations.
 
 ## Dependencies
 
@@ -64,4 +66,4 @@ This code performs cross-validation on the specified dataset using an MLP networ
 
 ## License
 
-Fast Neural Network is open source and is available under the MIT license. You are free to use, modify, and distribute the code as you see fit. See the LICENSE file for more information.
+Fast Neural Network is open source and is available under the GNU Public license. You are free to use, modify, and distribute the code as you see fit. See the LICENSE file for more information.
