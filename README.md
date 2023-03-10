@@ -11,10 +11,11 @@ To use this code, you must have the Intel Math Kernel Library installed.
 ## Getting Started
 
 To get started, clone the repository and include the "Network.h" header file in your C++ project.
-You must use the #define CLASS "yourclasslabel" macro before you include the Network.h file. (the default is "class") 
+You must use the #define CLASS "yourclasslabel" macro before you include the Network.h file. (the default is "class")  
 The library is intended to optimize the training time, so it performs the "one hot encoding" for categorical values when it reads the file instead of doing the encoding for every training. This means that the file's metadata is needed to manupulate the dataset, which means that the class label must be explicitly stated when the code is compiled.
 ```cpp
-#include "Network.h"```
+#include "Network.h"
+```
 The main function in "main.cpp" provides an example of how to load a dataset from an ARFF file, preprocess it, and train a multi-layer perceptron (MLP) network using cross-validation. You can modify this code to fit your own use case.
 
 
@@ -29,13 +30,16 @@ ARFFDataset::loadARFF(filename, data);
 This will load the dataset from the specified file and store it in a ARFFDataset object named "data".
 For the python enjoyers you can also use
 ```cpp
-auto data = loadARFF(filename);```
+auto data = loadARFF(filename);
+```
 
 and for the old school
+
 ```cpp
 ifstream inFile(filename);
 ARFFDataset data;
-inFile>>data;```
+inFile>>data;
+```
 ## Preprocessing
 
 This library provides several preprocessing functions for handling missing values and normalizing data. These functions can be called on a ARFFDataset object, as shown below:
