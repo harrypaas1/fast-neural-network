@@ -14,11 +14,7 @@
 #include <chrono>
 #include <algorithm>
 #include <random>
-#include <variant>
-#include <tuple>
-#include <unordered_map>
 #include <map>
-#include <typeinfo>
 
 #include <mkl.h>
 
@@ -29,62 +25,31 @@ using namespace std;
  
 int main(int argc, char** argv){
     
-    string filename = "/Users/harrypaas/Desktop/DMProj2/DMProj2/hypothyroid.arff";
+    string filename = "adult-big.arff";
     
     ARFFDataset data;
     
     ARFFDataset::loadARFF(filename, data);
     
-    data.replaceMissingValuesByClass();
+    data.replaceMissingValuesByClass(); //replace missing values with means/modes for entries with the same class label
     
-    data.normalize();
+    data.normalize(); //z score normalize all numeric columns
 
     data.shuffle();
     
     cout<<data<<endl;
     
-    vector<int> hidden_layer_sizes = {100, 100, 100, 100, 100};
-    double learningrate = 0.01;
-    int num_epochs = 100;
+    vector<int> hidden_layer_sizes = {100, 100};
+    double learningrate = 0.1;
+    int num_epochs = 10;
     int num_folds = 10;
-    Network::ACTIVATION activation = Network::RELU;
+    Network::ACTIVATION activation = Network::LOGISTIC;
     
     auto scores = Network::cross_validate<MLPNetwork>(data, hidden_layer_sizes, num_epochs, learningrate, num_folds, activation);
     
-    for(auto pair = scores.rbegin(); pair!=scores.rend();pair++){
-        cout<<(*pair).first<<" "<<(*pair).second<<endl;
+    for(auto pair : scores){
+        cout<<pair.first<<" "<<pair.second<<endl;
     }
-     
- 
-    
-    /*
-    
-    random_device rd;
-    mt19937 rng(rd());
-    rng.seed(420);
-    shuffle(data.begin(), data.end(), rng);
-    
-    
-    learningrate = 0.01;
-    int num_epochs = 10;
-    vector<int> sizes = {105,100,100,2};
-    
-    double lr_exp = -2.5;
-    double max_lr_exp=0.5;
-    for(lr_exp = -3 ;lr_exp<=-1; lr_exp+=0.05){
-        
-        learningrate=pow(10,lr_exp);
-        
-        
-        tuple<double, double, double, double> scores = cross_validate(data, meta, sizes, 10, 0.25);
-        
-        cout<<"Accuracy: "<<get<0>(scores)<<endl;
-        cout<<"Precision: "<<get<1>(scores)<<endl;
-        cout<<"Recall: "<<get<2>(scores)<<endl;
-        cout<<"F1: "<<get<3>(scores)<<endl;
-     
-    }
-    */
     
     return 0;
 }
