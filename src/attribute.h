@@ -1,9 +1,10 @@
-//
-//  attribute.h
-//  DMProj2
-//
-//  Created by Harry Paas on 2/13/23.
-//
+/*
+ * Filename: attribute.h
+ * Created Date: 2/18/23
+ * Author: Harrison Paas
+ * 
+ * Description: This file contains the implementation of a data object used to represent individual attributes of an ARFF file.
+ */
 
 #ifndef attribute_h
 #define attribute_h
