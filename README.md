@@ -55,7 +55,7 @@ The "replaceMissingValuesByClass()" function replaces missing values in the data
 
 ## Training
 
-This library currently only supports multilayer perceptron networks with stochastic gradient descent backpropogation for training. The supported activation functions are sigmoid, tanh, and relu. The Network class provides a static method cross_validate which returns a map with a variety of statistics.
+This library currently only supports multilayer perceptron networks with stochastic gradient descent backpropogation for training. The supported activation functions are sigmoid, tanh, and relu. The Network class provides a static method cross_validate performs k-fold cross-validation and returns a map with a variety of statistics, automatically detecting whether the task is a regression or classification task.
 
 ```cpp
 map<string,double> scores = Network::cross_validate<MLPNetwork>(data, hidden_layer_sizes, num_epochs, learningrate, num_folds, activation);
