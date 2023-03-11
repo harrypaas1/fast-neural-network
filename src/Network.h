@@ -18,7 +18,7 @@
 #include <functional>
 #include <map>
 #include <stdexcept>
-
+#include <chrono>
 #include <mkl.h>
 
 #include "ARFFDataset.h"
