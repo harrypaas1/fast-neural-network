@@ -13,7 +13,7 @@ To use this code, you must have the Intel Math Kernel Library installed.
 ## Getting Started
 
 To get started, clone the repository and include the "Network.h" header file in your C++ project.
-You must use the #define CLASS "yourclasslabel" macro before you include the Network.h file. (the default is "class")  
+You must use the #define CLASS "yourclasslabel" macro **before** you include the Network.h file. (the default is "class")  
 
 ```cpp
 #define classlabel "Class"
