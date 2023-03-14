@@ -1,13 +1,13 @@
 /*
- * Filename: ARFFMetaData.h
+ * Filename: MetaData.h
  * Created Date: 2/18/23
  * Author: Harrison Paas
  * 
  * Description: This file contains the implementation of a data object to represent an ARFF file's metadata
  */
 
-#ifndef ARFFMetaData_h
-#define ARFFMetaData_h
+#ifndef MetaData_h
+#define MetaData_h
 
 #ifndef CLASSLABEL
 #define CLASSLABEL "class"
@@ -248,4 +248,4 @@ public:
     
 };
 
-#endif /* ARFFMetaData_h */
+#endif /* MetaData_h */

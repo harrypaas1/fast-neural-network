@@ -1,13 +1,13 @@
 /*
- * Filename: ARFFEntry.h
+ * Filename: Entry.h
  * Created Date: 2/18/23
  * Author: Harrison Paas
  * 
  * Description: This file contains the implementation of a data object used to store ARFF data entries using "one hot encoding".
  */
 
-#ifndef ARFFEntry_h
-#define ARFFEntry_h
+#ifndef Entry_h
+#define Entry_h
 
 #ifndef DATA_ALIGNMENT
 #define DATA_ALIGNMENT 64
@@ -20,7 +20,7 @@
 
 using namespace std;
 
-class ARFFEntry{
+class Entry{
     
 private:
     int data_size;
@@ -31,7 +31,7 @@ public:
     double* data;
     double* expected;
     
-    ARFFEntry(){
+    Entry(){
         data_size=0;
         expected_size=0;
         classlabel="";
@@ -39,14 +39,14 @@ public:
         expected=NULL;
     }
     
-    ARFFEntry(int input_vector_size, int expected_vector_size){
+    Entry(int input_vector_size, int expected_vector_size){
         data_size=input_vector_size;
         expected_size=expected_vector_size;
         data = (double*)MKL_malloc(sizeof(double)*data_size, DATA_ALIGNMENT);
         expected = (double*)MKL_malloc(sizeof(double)*expected_size, DATA_ALIGNMENT);
     }
     
-    ARFFEntry(const ARFFEntry& other){
+    Entry(const Entry& other){
         data_size=other.get_data_size();
         expected_size=other.get_expected_size();
         data = (double*)MKL_malloc(sizeof(double)*data_size, DATA_ALIGNMENT);
@@ -58,7 +58,7 @@ public:
         
     }
     
-    ARFFEntry(ARFFEntry&& other) //noexcept
+    Entry(Entry&& other) //noexcept
       : data(nullptr), expected(nullptr), data_size(0), expected_size(0), classlabel("")
     {
         swap(data, other.data);
@@ -68,7 +68,7 @@ public:
         swap(classlabel, other.classlabel);
     }
     
-    friend void swap(ARFFEntry& first, ARFFEntry& second) noexcept {
+    friend void swap(Entry& first, Entry& second) noexcept {
         using std::swap;
         swap(first.data_size, second.data_size);
         swap(first.expected_size, second.expected_size);
@@ -99,11 +99,11 @@ public:
         return true;
     }
     
-    ~ARFFEntry(){
+    ~Entry(){
         MKL_free(data);
         MKL_free(expected);
     }
     
 };
 
-#endif /* ARFFEntry_h */
+#endif /* Entry_h */

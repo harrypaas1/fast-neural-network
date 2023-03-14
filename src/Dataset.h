@@ -1,13 +1,13 @@
 /*
- * Filename: ARFFDataset.h
+ * Filename: Dataset.h
  * Created Date: 2/18/23
  * Author: Harrison Paas
  * 
  * Description: This file contains the implementation of various methods for loading and processing data in ARFF format.
  */
 
-#ifndef ARFFDataset_h
-#define ARFFDataset_h
+#ifndef Dataset_h
+#define Dataset_h
 
 
 #include <iostream>
@@ -18,24 +18,24 @@
 #include <random>
 #include <algorithm>
 #include <unordered_map>
-#include "ARFFEntry.h"
-#include "ARFFMetaData.h"
+#include "Entry.h"
+#include "MetaData.h"
 
 
 
 class ARFFDataset{
     
 private:
-    vector<ARFFEntry> data;
+    vector<Entry> data;
     ARFFMetaData meta;
     
 public:
     
     ARFFDataset(){}
     
-    vector<ARFFEntry>& getData(){return data;}
+    vector<Entry>& getData(){return data;}
     
-    void addEntry(ARFFEntry& e){data.emplace_back(e);}
+    void addEntry(Entry& e){data.emplace_back(e);}
     
     void setMeta(ARFFMetaData& meta){ this->meta=meta;}
     
@@ -57,7 +57,7 @@ public:
         }
         
         double mean =0, total=0;
-        for(ARFFEntry& e : data){
+        for(Entry& e : data){
             if(!isnan(e.data[val_index])){
                 mean+=e.data[val_index];
                 total++;
@@ -79,7 +79,7 @@ public:
         for(string classlabel : classlabels){
             
             double mean=0, total=0;
-            for(ARFFEntry& e : data){
+            for(Entry& e : data){
                 if(e.getClass()==classlabel && !isnan(e.data[index])){
                     mean+=e.data[index];
                     total++;
@@ -104,7 +104,7 @@ public:
         
         double mean = getMean(label);
         double dev =0, total=0;
-        for(ARFFEntry& e : data){
+        for(Entry& e : data){
             if(!isnan(e.data[val_index])){
                 dev+=pow((e.data[val_index]-mean),2);
                 total++;
@@ -130,7 +130,7 @@ public:
         double std = getStdDev(label);
         
         if(!isnan(mean) && !isnan(std)){
-            for(ARFFEntry& e : data){
+            for(Entry& e : data){
                 e.data[val_index]-=mean;
                 e.data[val_index]/=std;
             }
@@ -154,7 +154,7 @@ public:
         int end = get<1>(range);
         
         unordered_map<int, int> freq_map;
-        for(ARFFEntry& e : data){
+        for(Entry& e : data){
             for(int i=start;i<end;i++){
                 if(e.data[i]==1) freq_map[i-start]++;
             }
@@ -189,7 +189,7 @@ public:
         for(string classlabel : classlabels){
             
             unordered_map<string, int> freq_map;
-            for(ARFFEntry& e : data){
+            for(Entry& e : data){
                 if(e.getClass()==classlabel){
                     for(int i=start;i<end;i++){
                         if(e.data[i]==1) freq_map[values.at(i-start)]++;
@@ -241,7 +241,7 @@ public:
                 
                 int index = meta.calcNumericDataIndex(a.getLabel());
                 double mean = getMean(a.getLabel());
-                for(ARFFEntry& e : data){
+                for(Entry& e : data){
                     if(e.isMissing(index, index+1)) e.data[index]=(isnan(mean)) ? 0 : mean;
                 }
             }
@@ -251,7 +251,7 @@ public:
                 int start = get<0>(range);
                 int end = get<1>(range);
                 int mode_index = getModeIndex(a.getLabel());
-                for(ARFFEntry& e : data){
+                for(Entry& e : data){
                     if(e.isMissing(start,end)) e.data[start+mode_index]=1;
                 }
             }
@@ -270,7 +270,7 @@ public:
                 unordered_map<string, double> means = getMeanByClass(a.getLabel());
                 int index = meta.calcNumericDataIndex(a.getLabel());
                 for(string classlabel : classlabels){
-                    for(ARFFEntry& e : data){
+                    for(Entry& e : data){
                         if(e.getClass()==classlabel && e.isMissing(index, index+1)) e.data[index]= (isnan(means[classlabel])) ? 0 : means[classlabel];
                     }
                 }
@@ -283,7 +283,7 @@ public:
                 int end = get<1>(range);
                 for(string classlabel : classlabels){
                     int mode_index = mode_indices[classlabel];
-                    for(ARFFEntry& e : data){
+                    for(Entry& e : data){
                         if(e.getClass()==classlabel && e.isMissing(start,end)) e.data[start+mode_index]=1;
                     }
                 }
@@ -377,7 +377,7 @@ public:
             
             stringstream l(line);
             
-            ARFFEntry e(entry_data_length, entry_class_length);
+            Entry e(entry_data_length, entry_class_length);
             
             int data_index=0;
             for(Attribute& a : meta.getAttributes()){
@@ -436,7 +436,7 @@ public:
         os<<meta<<endl;
         
         os<<"@data\n"<<endl;
-        for(ARFFEntry& e : data.getData()){
+        for(Entry& e : data.getData()){
             int data_index=0;
             bool end_of_line=false;
             for(Attribute& a : meta.getAttributes()){
@@ -478,4 +478,4 @@ public:
     
 };
 
-#endif /* ARFFDataset_h */
+#endif /* Dataset_h */
