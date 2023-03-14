@@ -22,8 +22,19 @@
 #include "MetaData.h"
 
 
+class Dataset{
+public:
+    
+    virtual vector<Entry>& getData()=0;
+    virtual MetaData& getMeta()=0;
+    virtual long getSize()=0;
+    
+    virtual string get_classlabel()=0;
+    virtual void addEntry(Entry& e)=0;
+    
+};
 
-class ARFFDataset{
+class ARFFDataset : public Dataset{
     
 private:
     vector<Entry> data;
@@ -33,17 +44,17 @@ public:
     
     ARFFDataset(){}
     
-    vector<Entry>& getData(){return data;}
+    vector<Entry>& getData() override {return data;}
     
-    void addEntry(Entry& e){data.emplace_back(e);}
+    void addEntry(Entry& e) override {data.emplace_back(e);}
     
-    void setMeta(ARFFMetaData& meta){ this->meta=meta;}
+    void setMeta(ARFFMetaData& meta) { this->meta=meta;}
     
-    ARFFMetaData& getMeta(){return meta;}
+    ARFFMetaData& getMeta() override {return meta;}
     
-    long int getSize(){return data.size();}
+    long int getSize() override {return data.size();}
     
-    string getClassLabel(){return meta.getClassLabel();}
+    string get_classlabel() override {return meta.get_classlabel();}
     
     //returns the mean of the attribute with specified label
     double getMean(string label){
@@ -223,7 +234,7 @@ public:
         auto indices = getModeIndexByClass(label);
         for(Attribute& a : meta.getAttributes()){
             if(a.getType()==CATEGORICAL && a.getLabel()==label){
-                for(string classlabel : meta.getClassLabels()){
+                for(string classlabel : meta.get_class_values()){
                     modes[classlabel] = a.getValues().at(indices[classlabel]);
                 }
             }

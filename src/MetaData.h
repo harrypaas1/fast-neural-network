@@ -82,7 +82,18 @@
 
 using namespace std;
 
-class ARFFMetaData{
+class MetaData{
+public:
+    virtual int get_input_layer_size()=0;
+    virtual int get_output_layer_size()=0;
+    virtual void set_input_layer_size(int size)=0;
+    virtual void set_output_layer_size(int size)=0;
+    virtual string get_classlabel()=0;
+    virtual vector<string>& get_class_values()=0; //throw if task is regression
+    
+};
+
+class ARFFMetaData : public MetaData{
     
 private:
     string relation;
@@ -102,8 +113,10 @@ public:
     
     int get_num_attributes(){return (int)attributes.size();}
     
-    string getClassLabel(){return CLASSLABEL;}
+    string get_classlabel() override {return CLASSLABEL;}
     
+    vector<string>& get_class_values() override{ return getValues(CLASSLABEL); }
+   
     //calculates the length of the array produced by the "one hot encoding"
     int calcEntryVectorLength(){
         int length=0;
@@ -118,9 +131,9 @@ public:
         return length;
     }
     
-    int get_input_layer_size(){return entry_data_length;}
+    int get_input_layer_size() override {return entry_data_length;}
     void update_input_layer_size(){entry_data_length=calcEntryVectorLength();}
-    void set_input_layer_size(int size){entry_data_length=size;}
+    void set_input_layer_size(int size) override {entry_data_length=size;}
     
     //calculates the length of the class values by the "one hot encoding"
     //class values and data values are stored in different arrays
@@ -138,9 +151,9 @@ public:
         return length;
     }
     
-    int get_output_layer_size(){return expected_data_length;}
+    int get_output_layer_size() override {return expected_data_length;}
     void update_output_layer_size(){expected_data_length = calcExpectedVectorLength();}
-    void set_output_layer_size(int size){expected_data_length=size;}
+    void set_output_layer_size(int size) override {expected_data_length=size;}
     
     //calculates the index of a numeric value in the array produced by the one hot encoding
     int calcNumericDataIndex(string label){
@@ -223,13 +236,6 @@ public:
         vector<string> v;
         throw invalid_argument("label not found\n");
     }
-    
-    //returns the unique values for the class label
-    //can only be used when class is categorical
-    vector<string>& getClassLabels(){
-        return getValues(CLASSLABEL);
-    }
-    
     
     friend ostream& operator<<(ostream& os, ARFFMetaData& meta){
         for(Attribute& a : meta.attributes){
