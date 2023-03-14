@@ -16,7 +16,7 @@ To get started, clone the repository and include the "Network.h" header file in 
 You must use the #define CLASS "yourclasslabel" macro **before** you include the Network.h file. (the default is "class")  
 
 ```cpp
-#define classlabel "Class"
+#define CLASS "Class"
 #include "Network.h"
 ```
 The library is intended to optimize the training time, so it performs the "one hot encoding" for categorical values when it reads the file instead of doing the encoding for every training. This means that the file's metadata is needed to manipulate the dataset. Instead of assuming the last attribute in the metadata is the class label, the class label must be explicitly stated when the code is compiled.  
