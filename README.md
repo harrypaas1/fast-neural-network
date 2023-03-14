@@ -7,7 +7,7 @@ The main goal of this library is to optimize the training time of the network. T
 ## Dependencies
 
 To use this code, you must have the Intel Math Kernel Library installed. 
-- Make sure your system meets the [system requirements](https://www.intel.com/content/www/us/en/developer/articles/system-requirements/oneapi-math-kernel-library-system-requirements.html). You dont need to worry about Data Parallel C++ (for now). Any relatively up to date system should be fine.  
+- Make sure your system meets the [system requirements](https://www.intel.com/content/www/us/en/developer/articles/system-requirements/oneapi-math-kernel-library-system-requirements.html), you don't need to worry about Data Parallel C++ (for now). Any relatively up to date system should be fine.  
 - Download the appropriate installer [here](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-download.html). The online or offline installer will guide you through the process, or you can see installation instructions for your package manager at the same link.  
 
 ## Getting Started
