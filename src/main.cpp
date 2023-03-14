@@ -36,8 +36,10 @@ int main(int argc, char** argv){
     int num_epochs = 10;
     int num_folds = 10;
     Network::ACTIVATION activation = Network::LOGISTIC;
+   
+    MLPNetwork net(hidden_layer_sizes, data.getMeta(), learningrate, activation);
     
-    auto scores = Network::cross_validate<MLPNetwork>(data, hidden_layer_sizes, num_epochs, learningrate, num_folds, activation);
+    auto scores = Network::cross_validate(data, net, num_epochs, learningrate, num_folds);
     
     for(auto pair : scores){
         cout<<pair.first<<" "<<pair.second<<endl;
