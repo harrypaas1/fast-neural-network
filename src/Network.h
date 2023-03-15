@@ -187,6 +187,7 @@ public:
         
         expected = e.expected;
         
+	//feedforward
         for(int i=0;i<num_layers-1;i++){
             
             //multiply weights[i] by layers[i] and store it in layers[i+1]
@@ -213,6 +214,7 @@ public:
        
         if(classification)times_activation_func_deriv(layers[num_layers-1], errors[num_layers-1], sizes.back());
         
+	//backpropogation
         for(int i = num_layers-1;i>0;i--){
             
             //update bias
