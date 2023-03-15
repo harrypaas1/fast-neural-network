@@ -89,7 +89,7 @@ To build your program on the command line, follow the two steps:
   - On Windown use the command: "C:\Program Files (x86)\Intel\oneAPI\setvars.bat"  
 - Build your program with the provided Makefile. Simply type "make" to build then "./main.out" to run. 
   - If your program is in a different directory than the Network.h files, you need to copy the Makefile to your working directory and add the flag: **-I/path/to/your/repo/clone/src** (that's a capital i) to the LINKFLAGS section.  
-  - (if you need help navigating the command line, I suggest you ask [chatGPT](chat.openai.com) or read [this repo](https://github.com/jlevy/the-art-of-command-line) for detailed explanations.  
+  - (if you need help navigating the command line, I suggest you ask [chatGPT](https://chat.openai.com) or read [this repo](https://github.com/jlevy/the-art-of-command-line) for detailed explanations.  
   
 Unfortunately, it is a bit more involved to link this library with an IDE. You must link your code with both the Intel MKL as well as the fast-neural-network files. You need to specify paths to all of the library and header files required and include linker flags for the dynamically linked MKL libraries. See Xcode Configuration for a detailed list of my configuration options for Xcode.  
 Keep in mind that the library is intended to optimize training time, and compiling with the command line will give you the best performance since you can make use of compiler optimization flags.  
