@@ -53,7 +53,7 @@ data.replaceMissingValuesByClass();
 data.normalize();
 data.shuffle() //note cross_validate does not automatically shuffle data
 ```
-The "replaceMissingValuesByClass()" function replaces missing values in the dataset with the mean/mode value for the attribute within the same class. The "normalize()" function normalizes the dataset to have zero mean and unit variance.
+The "replaceMissingValuesByClass()" function replaces missing values in the dataset with the mean/mode value for every attribute, grouped by class. The "normalize()" function z-score normalizes every numeric attribute of the dataset.
 
 ## Scoring
 
