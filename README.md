@@ -14,7 +14,7 @@ To use this code, you must have the Intel Math Kernel Library installed.
 
 To get started, clone the repository and include the "Network.h" header file in your C++ project.
 You must use the #define CLASS "yourclasslabel" macro **before** you include the Network.h file. (the default is "class")  
-
+NOTE: Your attribute names **cannot** contain spaces, even if they are surrounded by quotes. Even if your class label is surrounded by quotes, you need to define it as a c++ string (i.e "'ClassLabel'" or "\"ClassLabel\"")
 ```cpp
 #define CLASS "Class"
 #include "Network.h"
