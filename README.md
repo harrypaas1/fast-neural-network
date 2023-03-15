@@ -64,7 +64,7 @@ MLPNetwork net(hidden_layer_sizes, data.getMeta(), learningrate, activation);
 map<string,double> scores = Network::cross_validate(data, net, num_epochs, learningrate, num_folds);
 ```
 This code performs k-fold cross-validation on the specified dataset using an MLP network with the specified hyperparameters. The "num_folds" parameter specifies the number of folds to use in cross-validation.  
-Output:  
+Result:  
 
 ```
 Accuracy 0.859237
