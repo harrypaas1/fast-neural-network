@@ -60,7 +60,7 @@ The "replaceMissingValuesByClass()" function replaces missing values in the data
 This library currently only supports multilayer perceptron networks with stochastic gradient descent backpropogation for training. The supported activation functions are sigmoid, tanh, and relu. The Network class provides a static method cross_validate that performs k-fold cross-validation and returns a map with a variety of statistics, automatically detecting whether the task is a regression or classification task. You can instantiate an MLPNetwork object with the hidden layer sizes you want by passing the dataset's metadata into the constructor to automatically format the input and output layers.
 
 ```cpp
-MLPNetwork net(hidden_layer_sizes, data,getMeta(), learningrate, activation);
+MLPNetwork net(hidden_layer_sizes, data.getMeta(), learningrate, activation);
 map<string,double> scores = Network::cross_validate(data, net, num_epochs, learningrate, num_folds);
 ```
 This code performs k-fold cross-validation on the specified dataset using an MLP network with the specified hyperparameters. The "num_folds" parameter specifies the number of folds to use in cross-validation.  
