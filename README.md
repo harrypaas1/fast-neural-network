@@ -79,7 +79,8 @@ Micro Recall <=50K 0.931049
 Micro Recall >50K 0.63098
 Total time 42.3828
 Train time 40.5367
-```
+```  
+(I hate string literals so the Network.h file defines macros you can use to directly access any of these scores. You can also use the string literals, but note that the micro scores need a space between the score name and the class label.)
 
 ## Compiling
 To build your program on the command line, follow the two steps:  
