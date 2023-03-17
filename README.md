@@ -2,7 +2,11 @@
 
 This is a lightweight implementation of a multi-layer perceptron neural network in C++. It provides a simple and efficient way to read an ARFF file, preprocess the data, and train and cross-validate a multilayer perceptron network for classification or regression tasks.
 
-The main goal of this library is to optimize the training time of the network. The library uses the Intel Math Kernel Library for optimized matrix computations.
+The main goal of this library is to optimize the training time of the network. The library uses the Intel Math Kernel Library for optimized matrix computations.  
+
+## Performance  
+Here are some results I got on my local machine: ![](bar_chart.jpg)  
+This test was performed on a network with 2 hidden layers with 100 neurons each and relu activation function for 50 epochs over 10-fold cross-validation. This test was performed on the 'adult-big.arff' dataset, which can be found in the src folder. The dataset contains about 45000 training entries and about 4000 test entries for 10-fold validation, which means this performed the computations for each training in an average of just over 1 microsecond. See the Optimiation issue for more info.
 
 ## Dependencies
 
