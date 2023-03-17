@@ -76,9 +76,6 @@ private:
     
     double learningrate;
     ACTIVATION activation;
-    
-    function<double(double)> activation_function;
-    function<double(double)> activation_function_deriv;
 
     void init_layers(){
         weights = new double*[num_layers-1];
