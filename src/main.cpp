@@ -45,12 +45,6 @@ int main(int argc, char** argv){
     for(auto pair : scores){
         cout<<pair.first<<" "<<pair.second<<endl;
     }
- 
-    ofstream outFile("adult.out");
-    double time = scores[TOTAL_TIME];
-    outFile<<"Total time: "<<time<<endl;
-    outFile<<"Avg time per fold: "<<time/num_folds<<endl;
-    outFile<<"Avg time per epoch: "<<time/(long double)(num_folds*num_epochs)<<endl;
     
     return 0;
 }
