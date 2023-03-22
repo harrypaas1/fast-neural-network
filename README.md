@@ -6,7 +6,7 @@ The main goal of this library is to optimize the training time of the network. T
 
 ## Performance  
 Here are some results I got on my local machine: <p align="center"/> <img src="chart.jpg" height = "400"/>  </p>
-This test was performed on a network with 2 hidden layers with 100 neurons each and relu activation function for 50 epochs over 10-fold cross-validation. This test was performed on the 'adult-big.arff' dataset, which can be found in the src folder. The dataset contains about 45000 training entries and about 4000 test entries for 10-fold validation, which means this network performed the computations for each training in an average of just over 1 microsecond. See the Optimization issue for more info.
+This test was performed on a network with 2 hidden layers with 100 neurons each and relu activation function for 50 epochs over 10-fold cross-validation. This test was performed on the 'adult-big.arff' dataset, which can be found in the src folder. The dataset contains about 45000 training entries and about 4000 test entries for 10-fold validation, which means this network performed the computations for each training in an average of just over 1 microsecond. The training is currently only single threaded, but I'm developing an implementation with SYCL that will hopefully be a lot more optimized.
 
 ## Dependencies
 
